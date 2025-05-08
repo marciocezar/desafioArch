@@ -60,7 +60,8 @@ Com base nos dados coletados, será avaliada a necessidade de introduzir uma **f
 Essa evolução será implementada após a análise de métricas de monitoramento, garantindo que a introdução da fila seja justificada pela necessidade de desempenho e volume de dados.
 
 ## Passos para Montar o Desafio
-1. Siga as instruções detalhadas no `setup.md` para configurar o ambiente e os projetos.
+1. Siga as instruções detalhadas no `setup.md` para configurar o ambiente e o projeto.
+(Todos os detalhes das necessidades do projto estão nesse arquivo)
 
 ## Execução
 - Execute o comando abaixo para iniciar os containers:
