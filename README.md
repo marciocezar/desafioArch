@@ -61,10 +61,6 @@ Essa evolução será implementada após a análise de métricas de monitorament
 
 ## Passos para Montar o Desafio
 1. Siga as instruções detalhadas no `setup.md` para configurar o ambiente e os projetos.
-2. Implemente os modelos, controladores e contextos conforme descrito nos projetos TransactionService e ConsolidationService.
-3. Configure o Swagger em ambos os serviços para documentação das APIs.
-4. Implemente testes unitários nos projetos TransactionService.Tests e ConsolidationService.Tests.
-5. Hospede o código em um repositório público no GitHub.
 
 ## Execução
 - Execute o comando abaixo para iniciar os containers:
