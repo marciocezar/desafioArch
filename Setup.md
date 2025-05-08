@@ -6,22 +6,20 @@
 - Instale o Docker Desktop, que inclui o Docker Compose.
 
 ## 2. Estrutura do Projeto
-
-- Crie uma solução: `dotnet new sln -n CashFlowSolution`
-
-- Crie os projetos:
-
-  ```bash
-  dotnet new webapi -n TransactionService --output TransactionService
-  dotnet new webapi -n ConsolidationService --output ConsolidationService
-  ```
-
-- Adicione à solução:
-
-  ```bash
-  dotnet sln add TransactionService/TransactionService.csproj
-  dotnet sln add ConsolidationService/ConsolidationService.csproj
-  ```
+```
+/DesafioARCH
+├── TransactionService
+│   ├── Dockerfile
+│   ├── TransactionService.csproj
+├── TransactionService.Tests
+│
+├── ConsolidationService
+│   ├── Dockerfile
+│   ├── ConsolidationService.csproj
+├── ConsolidationService.Tests
+│
+├── docker-compose.yml
+```
 
 ## 3. Banco de Dados
 
@@ -38,7 +36,7 @@
 ## 6. Execução
 
 - Build: `docker-compose build`
-- Roda: `docker-compose up`
+- Roda: `docker-compose up -d`
 - Acesse as APIs via Swagger:
   - TransactionService: http://localhost:5000/swagger
   - ConsolidationService: http://localhost:5001/swagger
