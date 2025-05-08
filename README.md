@@ -61,7 +61,7 @@ Essa evolução será implementada após a análise de métricas de monitorament
 
 ## Passos para Montar o Desafio
 1. Siga as instruções detalhadas no `setup.md` para configurar o ambiente e o projeto.
-(Todos os detalhes das necessidades do projto estão nesse arquivo)
+(Todos os detalhes das necessidades do projeto estão nesse arquivo)
 
 ## Execução
 - Execute o comando abaixo para iniciar os containers:
