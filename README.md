@@ -40,6 +40,12 @@ graph TD
 - **PostgreSQL**: Banco de dados relacional que armazena todas as transações.
 - **Swagger UI**: Interface para documentação e teste das APIs, acessível em `/swagger`.
 
+## Evoluções Futuras
+Para melhorar a segurança da solução, é necessário abordar a exposição de senhas e credenciais atualmente definidas em texto simples nos arquivos `docker-compose.yml` e `appsettings.json`. Uma evolução planejada inclui a integração com um **gerenciador de segredos** (service manager), como:
+- **AWS Secrets Manager**, **Azure Key Vault** ou **HashiCorp Vault** para armazenar credenciais sensíveis de forma segura.
+- **Docker Secrets** para gerenciar senhas em ambientes conteinerizados.
+Essa abordagem reduzirá os riscos de exposição de dados sensíveis, alinhando a solução com boas práticas de segurança.
+
 ## Passos para Montar o Desafio
 1. Siga as instruções detalhadas no `setup.md` para configurar o ambiente e os projetos.
 2. Implemente os modelos, controladores e contextos conforme descrito nos projetos TransactionService e ConsolidationService.
