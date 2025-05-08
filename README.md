@@ -41,10 +41,23 @@ graph TD
 - **Swagger UI**: Interface para documentação e teste das APIs, acessível em `/swagger`.
 
 ## Evoluções Futuras
-Para melhorar a segurança da solução, é necessário abordar a exposição de senhas e credenciais atualmente definidas em texto simples nos arquivos `docker-compose.yml` e `appsettings.json`. Uma evolução planejada inclui a integração com um **gerenciador de segredos** (service manager), como:
-- **AWS Secrets Manager**, **Azure Key Vault** ou **HashiCorp Vault** para armazenar credenciais sensíveis de forma segura.
+### Segurança
+Para melhorar a segurança da solução, é necessário abordar a exposição de senhas e credenciais atualmente definidas em texto simples nos arquivos `docker-compose.yml` e `appsettings.json`. Uma evolução planejada inclui a integração com um **gerenciador de segredos**, como:
+- **AWS Secrets Manager**, **Azure Key Vault**, ou **HashiCorp Vault** para armazenar credenciais sensíveis de forma segura.
 - **Docker Secrets** para gerenciar senhas em ambientes conteinerizados.
 Essa abordagem reduzirá os riscos de exposição de dados sensíveis, alinhando a solução com boas práticas de segurança.
+
+### Monitoramento e Assincronicidade
+Para garantir a performance e escalabilidade da solução, é planejada a implementação de um sistema de **monitoramento** utilizando ferramentas como **Prometheus** e **Grafana**. O monitoramento permitirá:
+- Rastrear métricas de desempenho, como latência, taxa de requisições e uso de recursos (CPU, memória).
+- Identificar gargalos no processamento, especialmente no ConsolidationService, que realiza consultas intensivas ao banco de dados.
+
+Com base nos dados coletados, será avaliada a necessidade de introduzir uma **fila de mensagens** (como **RabbitMQ** ou **Kafka**) para processamento assíncrono. Os benefícios da assincronicidade incluem:
+- **Desacoplamento**: O TransactionService pode enviar transações para uma fila, permitindo que o ConsolidationService processe os dados em segundo plano, reduzindo a carga direta no banco de dados.
+- **Escalabilidade**: A fila permite balancear a carga entre múltiplas instâncias do ConsolidationService, suportando picos de tráfego.
+- **Resiliência**: Em caso de falhas temporárias no ConsolidationService, as transações ficam armazenadas na fila até serem processadas.
+
+Essa evolução será implementada após a análise de métricas de monitoramento, garantindo que a introdução da fila seja justificada pela necessidade de desempenho e volume de dados.
 
 ## Passos para Montar o Desafio
 1. Siga as instruções detalhadas no `setup.md` para configurar o ambiente e os projetos.
