@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  transactionservice:
+    build:
+      context: ./TransactionService
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=cashflowdb;Username=postgres;Password=password
+    networks:
+      - cashflow-network
+
+  consolidationservice:
+    build:
+      context: ./ConsolidationService
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=cashflowdb;Username=postgres;Password=password
+    networks:
+      - cashflow-network
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: cashflowdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - cashflow-network
+
+volumes:
+  pgdata:
+
+networks:
+  cashflow-network:
+    driver: bridge
